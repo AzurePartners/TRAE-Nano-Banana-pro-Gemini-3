@@ -2,7 +2,7 @@
 
 > **Transform your portraits into stunning AI-powered artistic masterpieces!**
 
-<video src="demo.mp4" width="700" height="400" controls></video>
+https://github.com/user-attachments/assets/3fe50fd9-5a7c-4c56-a25e-275db3221b80
 
 A sophisticated full-stack web application that leverages Google Gemini AI to transform portrait photographs into various artistic styles. Built with modern web technologies, this application provides a seamless experience for creative image transformation.
 
