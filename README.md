@@ -2,7 +2,7 @@
 
 > **Transform your portraits into stunning AI-powered artistic masterpieces!**
 
-<video controls src="New Project.mp4" title=""></video>
+<video controls src="https://github.com/AzurePartners/TRAE-2.0-Nano-Banana-Image-Editor/blob/main/New%20Project.mp4" title=""></video>
 
 A sophisticated full-stack web application that leverages Google Gemini AI to transform portrait photographs into various artistic styles. Built with modern web technologies, this application provides a seamless experience for creative image transformation.
 
