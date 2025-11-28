@@ -31,15 +31,27 @@ export interface TransformResponse {
   mimeType?: string;
   style?: string;
   prompt?: string;
+  isCustomPrompt?: boolean;
   message?: string;
   error?: string;
 }
 
-export const transformImage = async (imageFile: File, style: string): Promise<TransformResponse> => {
+export const transformImage = async (
+  imageFile: File, 
+  style: string, 
+  customPrompt?: string, 
+  useCustomPrompt?: boolean
+): Promise<TransformResponse> => {
   try {
     const formData = new FormData();
     formData.append('image', imageFile);
     formData.append('style', style);
+    if (useCustomPrompt && customPrompt) {
+      formData.append('customPrompt', customPrompt);
+      formData.append('useCustomPrompt', 'true');
+    } else {
+      formData.append('useCustomPrompt', 'false');
+    }
 
     console.log(`🎨 Transforming image with style: ${style}`);
 

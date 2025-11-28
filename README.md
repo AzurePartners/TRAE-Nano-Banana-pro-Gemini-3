@@ -11,7 +11,8 @@ A sophisticated full-stack web application that leverages Google Gemini AI to tr
 ### 🎨 Core Functionality
 - **🖼️ Drag & Drop Upload**: Intuitive image upload with visual feedback
 - **🎭 5 Artistic Styles**: Anime, Picasso, Oil Painting, Frida Kahlo, and Miniature Figure styles
-- **🤖 AI-Powered Transformation**: Powered by Google Gemini 2.5 Flash Image model
+- **🤖 AI-Powered Transformation**: Powered by Google Gemini 3.0 Nano Banana Pro
+- **✍️ Custom Prompts**: Write your own transformation prompts or use predefined styles
 - **⚡ Real-time Processing**: Fast image transformation with progress indicators
 - **📱 Responsive Design**: Perfect experience on desktop, tablet, and mobile
 
@@ -200,7 +201,9 @@ Content-Type: multipart/form-data
 
 Body:
 - image: File (required) - Image file (JPG, PNG, WEBP, max 10MB)
-- style: String (required) - One of: anime, picasso, oil, frida, miniature
+- style: String (required) - One of: Anime Style, Picasso Style, Oil Painting Style, Frida Kahlo Style, Miniature Effect
+- useCustomPrompt: String (optional) - "true" or "false" (default: "false")
+- customPrompt: String (optional) - Custom transformation prompt (required if useCustomPrompt is "true")
 ```
 
 **Response Success** (200):
@@ -209,8 +212,10 @@ Body:
   "success": true,
   "transformedImage": "base64_encoded_image_data",
   "mimeType": "image/png",
-  "style": "anime",
-  "processingTime": 2847
+  "style": "Anime Style",
+  "prompt": "Using the provided image of this person, transform this portrait into pretty, anime style.",
+  "isCustomPrompt": false,
+  "message": "Image successfully transformed with Anime Style style!"
 }
 ```
 
@@ -222,11 +227,23 @@ Body:
 }
 ```
 
-**cURL Example**:
+**cURL Examples**:
+
+Using predefined style:
 ```bash
 curl -X POST http://localhost:5001/api/transform \
   -F "image=@portrait.jpg" \
-  -F "style=anime"
+  -F "style=Anime Style" \
+  -F "useCustomPrompt=false"
+```
+
+Using custom prompt:
+```bash
+curl -X POST http://localhost:5001/api/transform \
+  -F "image=@portrait.jpg" \
+  -F "style=Anime Style" \
+  -F "useCustomPrompt=true" \
+  -F "customPrompt=Transform this portrait into a cyberpunk style with neon lights and futuristic elements"
 ```
 
 ## 🏗️ Component Architecture
@@ -246,7 +263,8 @@ curl -X POST http://localhost:5001/api/transform \
 #### `<StyleSelector />` - Style Selection
 - **Location**: `frontend/src/components/StyleSelector.tsx`
 - **Features**: 5 artistic style cards with hover effects
-- **Props**: `selectedStyle`, `onStyleSelect`
+- **Props**: `selectedStyle`, `onStyleChange`
+- **Note**: Only shown when custom prompt mode is disabled
 
 #### `<Preview />` - Image Comparison
 - **Location**: `frontend/src/components/Preview.tsx`
@@ -268,13 +286,14 @@ curl -X POST http://localhost:5001/api/transform \
 #### `server.js` - Main Server
 - **Express Configuration**: CORS, body parsing, error handling
 - **Multer Setup**: File upload middleware with validation
-- **Gemini Integration**: AI model initialization and image processing
-- **API Routes**: RESTful endpoint for image transformation
+- **Gemini Integration**: AI model initialization and image processing using Gemini 3.0 Nano Banana Pro
+- **API Routes**: RESTful endpoint for image transformation with support for custom prompts
 
 #### Helper Functions
 - **`fileToGenerativePart`**: Converts uploaded file to Gemini-compatible format
-- **`getStylePrompt`**: Maps style names to detailed AI prompts
+- **`getStylePrompt`**: Maps style names to detailed AI prompts (used when custom prompt is disabled)
 - **Error Handling**: Comprehensive error catching and user-friendly messages
+- **Custom Prompt Support**: Accepts and processes user-defined transformation prompts
 
 ## 🎨 Available Styles
 
@@ -375,6 +394,12 @@ CMD ["npm", "start"]
 2. **Add style card** in `frontend/src/components/StyleSelector.tsx`
 3. **Update TypeScript interfaces** if needed
 4. **Test thoroughly** with various image types
+
+### Using Custom Prompts
+1. **Toggle the "Use Custom Prompt" switch** in the UI
+2. **Enter your custom transformation prompt** in the text area
+3. **Click "Transform Image"** to apply your custom prompt
+4. **Note**: When custom prompt is enabled, predefined styles are disabled and vice versa
 
 
 ## 🙏 Acknowledgments

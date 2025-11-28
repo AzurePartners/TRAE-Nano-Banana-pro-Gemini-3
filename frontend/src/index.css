@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Ensure full height coverage */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 /* Custom animations */
 @keyframes fade-in {
   from {
@@ -67,35 +75,35 @@
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  background: #f1f5f9;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #8b5cf6, #3b82f6);
-  border-radius: 4px;
+  background: linear-gradient(to bottom, #10b981, #6b7280);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #7c3aed, #2563eb);
+  background: linear-gradient(to bottom, #059669, #4b5563);
 }
 
 /* Glass morphism effects */
 .glass {
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
 /* Gradient text animation */
 .gradient-text {
-  background: linear-gradient(45deg, #8b5cf6, #3b82f6, #06b6d4, #8b5cf6);
+  background: linear-gradient(45deg, #10b981, #059669, #6b7280, #10b981);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -114,7 +122,7 @@
 
 /* Button hover effects */
 .btn-glow:hover {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
 }
 
 /* Image hover effects */
@@ -124,7 +132,7 @@
 
 .image-hover:hover {
   transform: scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Responsive design helpers */

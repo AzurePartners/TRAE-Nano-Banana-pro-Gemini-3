@@ -9,24 +9,24 @@ interface ErrorBannerProps {
 const ErrorBanner: React.FC<ErrorBannerProps> = ({ message, onClose }) => {
   return (
     <div className="fixed top-4 right-4 z-50 animate-slide-in-right">
-      <div className="bg-gradient-to-r from-red-600 to-pink-600 text-white p-4 rounded-xl shadow-2xl border border-red-400/50 max-w-md">
+      <div className="bg-white text-gray-800 p-4 rounded-xl shadow-xl border-2 border-red-200 max-w-md">
         <div className="flex items-start space-x-3">
           <div className="flex-shrink-0">
-            <AlertCircle className="w-6 h-6 text-red-200" />
+            <AlertCircle className="w-6 h-6 text-red-500" />
           </div>
           <div className="flex-1">
-            <h4 className="font-bold text-sm mb-1">Oops! Something went wrong</h4>
-            <p className="text-red-100 text-sm leading-relaxed">{message}</p>
+            <h4 className="font-bold text-sm mb-1 text-gray-900">Oops! Something went wrong</h4>
+            <p className="text-gray-700 text-sm leading-relaxed">{message}</p>
           </div>
           <button
             onClick={onClose}
-            className="flex-shrink-0 text-red-200 hover:text-white transition-colors duration-200 transform hover:scale-110"
+            className="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors duration-200 transform hover:scale-110"
           >
             <X size={18} />
           </button>
         </div>
-        <div className="mt-3 pt-3 border-t border-red-400/30">
-          <p className="text-red-200 text-xs">Try again or contact support if the issue persists</p>
+        <div className="mt-3 pt-3 border-t border-gray-200">
+          <p className="text-gray-500 text-xs">Try again or contact support if the issue persists</p>
         </div>
       </div>
     </div>

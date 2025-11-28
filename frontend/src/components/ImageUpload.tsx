@@ -54,24 +54,24 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload }) => {
     <div className="space-y-4">
       {!preview ? (
         <div
-          className={`border-2 border-dashed rounded-2xl p-8 text-center transition-all duration-300 ${
+          className={`border-2 border-dashed rounded-xl p-8 text-center transition-all duration-300 ${
             isDragOver
-              ? 'border-purple-400 bg-purple-500/20 scale-105'
-              : 'border-white/30 hover:border-purple-400 hover:bg-white/5'
+              ? 'border-emerald-400 bg-emerald-50 scale-[1.02]'
+              : 'border-gray-300 hover:border-emerald-400 hover:bg-gray-50'
           }`}
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
         >
           <div className="flex flex-col items-center space-y-4">
-            <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-4 rounded-full">
-              <Upload className="w-12 h-12 text-white" />
+            <div className="bg-gradient-to-r from-emerald-500 to-gray-600 p-4 rounded-full">
+              <Upload className="w-10 h-10 text-white" />
             </div>
             <div>
-              <p className="text-white text-lg font-semibold mb-2">
+              <p className="text-gray-800 text-lg font-semibold mb-2">
                 Drop your image here
               </p>
-              <p className="text-gray-300 text-sm">
+              <p className="text-gray-500 text-sm">
                 or click to browse
               </p>
             </div>
@@ -84,7 +84,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload }) => {
             />
             <label
               htmlFor="image-upload"
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl cursor-pointer transition-all duration-300 transform hover:scale-105 shadow-lg"
+              className="bg-gradient-to-r from-emerald-500 to-gray-600 hover:from-emerald-600 hover:to-gray-700 text-white font-semibold py-2.5 px-6 rounded-lg cursor-pointer transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
             >
               Choose Image
             </label>
@@ -92,13 +92,13 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload }) => {
         </div>
       ) : (
         <div className="relative group">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+          <div className="relative rounded-xl overflow-hidden shadow-lg border border-gray-200 bg-gray-50">
             <img
               src={preview}
               alt="Uploaded preview"
               className="w-full h-auto object-contain"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="flex items-center space-x-2 text-white text-sm">
                   <ImageIcon size={16} />

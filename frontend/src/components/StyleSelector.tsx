@@ -10,68 +10,62 @@ const StyleSelector: React.FC<StyleSelectorProps> = ({ selectedStyle, onStyleCha
     {
       name: 'Anime Style',
       description: 'Transform into beautiful anime character',
-      icon: '🎌',
       gradient: 'from-pink-500 to-purple-600'
     },
     {
       name: 'Picasso Style',
       description: 'Geometric abstract cubist art',
-      icon: '🎨',
       gradient: 'from-blue-500 to-cyan-600'
     },
     {
       name: 'Oil Painting Style',
       description: 'Classic Degas oil painting',
-      icon: '🖼️',
       gradient: 'from-amber-500 to-orange-600'
     },
     {
       name: 'Frida Kahlo Style',
       description: 'Bold colors and symbolic elements',
-      icon: '🌺',
       gradient: 'from-red-500 to-pink-600'
     },
     {
       name: 'Miniature Effect',
       description: '1/7 scale commercialized figure',
-      icon: '🏺',
       gradient: 'from-green-500 to-teal-600'
     }
   ];
 
   return (
-    <div className="space-y-3">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
       {styles.map((style) => (
         <div
           key={style.name}
           onClick={() => onStyleChange(style.name)}
-          className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+          className={`p-5 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
             selectedStyle === style.name
-              ? `border-purple-400 bg-gradient-to-r ${style.gradient} shadow-lg shadow-purple-500/25`
-              : 'border-white/20 bg-white/5 hover:bg-white/10 hover:border-purple-400/50'
+              ? `border-emerald-500 bg-gradient-to-r from-emerald-500 to-gray-600 shadow-md ring-2 ring-emerald-200`
+              : 'border-gray-200 bg-white hover:bg-gray-50 hover:border-emerald-300 hover:shadow-sm'
           }`}
         >
-          <div className="flex items-center space-x-4">
-            <div className="text-2xl">{style.icon}</div>
+          <div className="flex items-start justify-between">
             <div className="flex-1">
-              <h3 className={`font-bold text-lg ${
-                selectedStyle === style.name ? 'text-white' : 'text-gray-200'
+              <h3 className={`font-semibold text-base mb-1 ${
+                selectedStyle === style.name ? 'text-white' : 'text-gray-900'
               }`}>
                 {style.name}
               </h3>
-              <p className={`text-sm ${
-                selectedStyle === style.name ? 'text-gray-100' : 'text-gray-400'
+              <p className={`text-sm leading-relaxed ${
+                selectedStyle === style.name ? 'text-gray-100' : 'text-gray-600'
               }`}>
                 {style.description}
               </p>
             </div>
-            <div className={`w-5 h-5 rounded-full border-2 ${
+            <div className={`ml-4 w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
               selectedStyle === style.name
-                ? 'bg-purple-400 border-purple-400'
-                : 'border-gray-400'
+                ? 'bg-white border-white'
+                : 'border-gray-300 bg-white'
             }`}>
               {selectedStyle === style.name && (
-                <div className="w-full h-full rounded-full bg-white transform scale-75"></div>
+                <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
               )}
             </div>
           </div>

@@ -67,14 +67,20 @@ app.post('/api/transform', upload.single('image'), async (req, res) => {
         }
 
         const style = req.body.style || 'Anime Style'; 
-        const stylePrompt = getStylePrompt(style); 
+        const customPrompt = req.body.customPrompt;
+        const useCustomPrompt = req.body.useCustomPrompt === 'true' || req.body.useCustomPrompt === true;
+        
+        // Use custom prompt if provided, otherwise use predefined style prompt
+        const stylePrompt = useCustomPrompt && customPrompt 
+            ? customPrompt 
+            : getStylePrompt(style);
 
-        console.log(`🎨 Transforming image with style: ${style}`);
-        console.log(`📝 Style prompt: ${stylePrompt}`);
+        console.log(`🎨 Transforming image with ${useCustomPrompt && customPrompt ? 'custom prompt' : `style: ${style}`}`);
+        console.log(`📝 Prompt: ${stylePrompt}`);
 
-        // Use Gemini 2.5 Flash for image generation
+        // Use Gemini 3 Nano Banana Pro for image generation
         const response = await genAI.models.generateContent({
-            model: "gemini-2.5-flash-image-preview",
+            model: "gemini-3-pro-image-preview",
             contents: [
                 fileToGenerativePart(req.file.buffer, req.file.mimetype),
                 { text: stylePrompt }
@@ -113,9 +119,12 @@ app.post('/api/transform', upload.single('image'), async (req, res) => {
             success: true, 
             transformedImage: transformedImageData, 
             mimeType: outputMimeType,
-            style: style,
+            style: useCustomPrompt ? 'Custom' : style,
             prompt: stylePrompt,
-            message: `Image successfully transformed with ${style} style!`
+            isCustomPrompt: useCustomPrompt,
+            message: useCustomPrompt 
+                ? 'Image successfully transformed with custom prompt!' 
+                : `Image successfully transformed with ${style} style!`
         }); 
 
     } catch (error) { 
