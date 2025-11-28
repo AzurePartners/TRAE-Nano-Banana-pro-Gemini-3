@@ -2,7 +2,7 @@
 
 > **Transform your portraits into stunning AI-powered artistic masterpieces!**
 
-A sophisticated full-stack web application that leverages Google Gemini AI to transform portrait photographs into various artistic styles. Built with modern web technologies, this application provides a seamless experience for creative image transformation.
+A sophisticated full-stack web application that leverages **Google Gemini 3.0 Nano Banana Pro** to transform portrait photographs into various artistic styles. Built with modern web technologies, this application provides a seamless experience for creative image transformation powered by the latest AI model.
 
 ## ✨ Features & Capabilities
 
@@ -37,6 +37,7 @@ A sophisticated full-stack web application that leverages Google Gemini AI to tr
 | **Express.js** | 4.21.2 | Web framework |
 | **Multer** | 1.4.5 | File upload handling |
 | **Google Generative AI** | 0.21.0 | AI image transformation |
+| **Gemini 3.0 Nano Banana Pro** | Latest | Advanced AI model for image generation |
 | **CORS** | 2.8.5 | Cross-origin resource sharing |
 | **Dotenv** | 16.4.7 | Environment variable management |
 
@@ -60,8 +61,9 @@ A sophisticated full-stack web application that leverages Google Gemini AI to tr
 
 ### Prerequisites
 - Node.js 18+ installed
-- Google Gemini API key ([Get one here](https://makersuite.google.com/app/apikey))
+- Google Gemini API key with access to **Gemini 3.0 Nano Banana Pro** ([Get one here](https://makersuite.google.com/app/apikey))
 - 2GB+ available RAM for optimal performance
+- Note: Ensure your API key has access to the Nano Banana Pro model
 
 ### 🎯 One-Command Setup
 ```bash
@@ -156,8 +158,9 @@ PORT=5002 npm start
 
 #### 🔴 "API Key Invalid" Error
 - Verify your Gemini API key is correct
-- Check API key has proper permissions
+- Check API key has proper permissions and access to **Gemini 3.0 Nano Banana Pro**
 - Ensure billing is enabled on your Google Cloud project
+- Verify the model name in `backend/server.js` matches the available model identifier
 
 #### 🔴 Frontend build fails
 ```bash
@@ -402,11 +405,21 @@ CMD ["npm", "start"]
 
 ## 🙏 Acknowledgments
 
-- **Google Gemini Team** for the amazing AI model
+- **Google Gemini Team** for the amazing **Gemini 3.0 Nano Banana Pro** AI model
 - **Vite** for the blazing-fast build tool
 - **TailwindCSS** for the utility-first CSS framework
 - **Lucide** for the beautiful icon library
 - **Node.js** community for the robust runtime
+
+## 🚀 About Gemini 3.0 Nano Banana Pro
+
+This application is powered by **Google Gemini 3.0 Nano Banana Pro**, the latest and most advanced image generation model from Google. Nano Banana Pro offers:
+
+- **Enhanced Image Quality**: Superior image generation with improved detail and accuracy
+- **Advanced Prompt Understanding**: Better interpretation of complex transformation requests
+- **Custom Prompt Support**: Full support for user-defined creative prompts
+- **Faster Processing**: Optimized performance for real-time image transformation
+- **Better Style Transfer**: More accurate artistic style transformations
 
 
 ---
