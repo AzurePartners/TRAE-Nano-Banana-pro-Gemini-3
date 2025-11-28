@@ -1,6 +1,7 @@
-# 🍌 Nano Banana Image Editor
+# 🍌 Nano Banana Pro Image Editor
 
 > **Transform your portraits into stunning AI-powered artistic masterpieces!**
+<img width="1917" height="919" alt="image" src="https://github.com/user-attachments/assets/560882e4-314b-457f-8b6c-d5a36667d98c" />
 
 A sophisticated full-stack web application that leverages **Google Gemini 3.0 Nano Banana Pro** to transform portrait photographs into various artistic styles. Built with modern web technologies, this application provides a seamless experience for creative image transformation powered by the latest AI model.
 
